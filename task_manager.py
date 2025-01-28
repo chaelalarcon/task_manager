@@ -155,3 +155,19 @@ def update_task():
             print("Invalid input. Please enter a valid number for task index.")
     else:
         print("No tasks available.")
+
+def delete_task():
+    view_tasks()
+    if tasks:
+        try:
+            task_index = int(input("Enter the index of the task to delete: ")) - 1
+            if 0 <= task_index < len(tasks):
+                deleted_task = tasks.pop(task_index)
+                save_tasks()
+                print(f"Task '{deleted_task['title']}' deleted successfully!")
+            else:
+                print("Invalid task index.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number for task index.")
+    else:
+        print("No tasks available.")
