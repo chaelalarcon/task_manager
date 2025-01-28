@@ -101,3 +101,14 @@ def add_task():
     except ValueError:
         print("Invalid date format. Task not added.")
         return
+
+    task = {
+            "title": title,
+            "description": description,
+            "priority": priority,
+            "due_date": due_date.strftime("%Y-%m-%d")  # Store the date as string
+        }
+        
+    tasks.append(task)
+    save_tasks()
+    print("Task added successfully!")
