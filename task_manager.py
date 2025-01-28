@@ -112,3 +112,12 @@ def add_task():
     tasks.append(task)
     save_tasks()
     print("Task added successfully!")
+
+def view_tasks():
+    if tasks:
+        print("\nTasks:")
+        for idx, task in enumerate(tasks, start=1):
+            print(f"{idx}. Title: {task['title']}, Description: {task['description']}, "
+                  f"Priority: {task['priority']}, Due Date: {task['due_date']}")
+    else:
+        print("No tasks available.")
