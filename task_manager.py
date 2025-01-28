@@ -121,3 +121,37 @@ def view_tasks():
                   f"Priority: {task['priority']}, Due Date: {task['due_date']}")
     else:
         print("No tasks available.")
+
+def update_task():
+    view_tasks()
+    if tasks:
+        try:
+            task_index = int(input("Enter the index of the task to update: ")) - 1
+            if 0 <= task_index < len(tasks):
+                task = tasks[task_index]
+                new_title = input(f"Enter new title (current: {task['title']}) (Press Enter to skip): ")
+                new_description = input(f"Enter new description (current: {task['description']}) (Press Enter to skip): ")
+                new_priority = input(f"Enter new priority (current: {task['priority']}) (Low, Medium, High) (Press Enter to skip): ").capitalize()
+                new_due_date_str = input(f"Enter new due date (current: {task['due_date']}) (YYYY-MM-DD) (Press Enter to skip): ")
+                
+                if new_title:
+                    task['title'] = new_title
+                if new_description:
+                    task['description'] = new_description
+                if new_priority in ['Low', 'Medium', 'High']:
+                    task['priority'] = new_priority
+                if new_due_date_str:
+                    try:
+                        new_due_date = datetime.strptime(new_due_date_str, "%Y-%m-%d")
+                        task['due_date'] = new_due_date.strftime("%Y-%m-%d")
+                    except ValueError:
+                        print("Invalid date format. Skipping date update.")
+                
+                save_tasks()
+                print("Task updated successfully!")
+            else:
+                print("Invalid task index.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number for task index.")
+    else:
+        print("No tasks available.")
