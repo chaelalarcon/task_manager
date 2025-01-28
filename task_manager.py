@@ -86,3 +86,18 @@ def load_tasks():
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
+
+def add_task():
+    title = input("Enter task title: ")
+    description = input("Enter task description: ")
+    priority = input("Enter task priority (Low, Medium, High): ").capitalize()
+    while priority not in ['Low', 'Medium', 'High']:
+        print("Invalid priority. Please choose from Low, Medium, or High.")
+        priority = input("Enter task priority (Low, Medium, High): ").capitalize()
+    
+    due_date_str = input("Enter task due date (YYYY-MM-DD): ")
+    try:
+        due_date = datetime.strptime(due_date_str, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format. Task not added.")
+        return
