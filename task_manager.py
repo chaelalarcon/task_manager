@@ -171,3 +171,16 @@ def delete_task():
             print("Invalid input. Please enter a valid number for task index.")
     else:
         print("No tasks available.")
+
+def main():
+    global tasks
+    tasks = load_tasks()
+    
+    while True:
+        print("\nInteractive Task Manager")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Update Task")
+        print("4. Delete Task")
+        print("5. Exit")
+        
