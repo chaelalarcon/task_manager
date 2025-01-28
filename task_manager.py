@@ -184,3 +184,21 @@ def main():
         print("4. Delete Task")
         print("5. Exit")
         
+        choice = input("Select an option (1-5): ")
+        
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            update_task()
+        elif choice == "4":
+            delete_task()
+        elif choice == "5":
+            print("Exiting the Task Manager. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please select a valid option (1-5).")
+
+if __name__ == "__main__":
+    main()
